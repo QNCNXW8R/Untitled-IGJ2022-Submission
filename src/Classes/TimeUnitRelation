@@ -1,0 +1,10 @@
+import TimeUnit from "./TimeUnit";
+
+export default class TimeUnitRelation {
+    constructor(fromUnit=TimeUnit(), toUnit=TimeUnit(), basePer=1, currentPer=1) {
+        this.fromUnit = fromUnit
+        this.toUnit = toUnit
+        this.basePer = basePer
+        this.currentPer = currentPer
+    }
+}

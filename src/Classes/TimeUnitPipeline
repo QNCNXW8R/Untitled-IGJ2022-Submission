@@ -1,0 +1,5 @@
+export default class TimeUnitPipeline {
+    constructor(timeRelations=[]) {
+        this.timeRelations = timeRelations;
+    }
+}

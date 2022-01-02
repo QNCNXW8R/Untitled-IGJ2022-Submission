@@ -1,0 +1,9 @@
+export default class TimeUnit {
+    constructor(name='', value=0, visible=function(){return true}, requirement=function(){return true}) {
+        this.name = name;
+        this.value = value;
+        this.total = total
+        this.visible = visible;
+        this.requirement = requirement;
+    }
+}
