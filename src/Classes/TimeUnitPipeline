@@ -2,4 +2,11 @@ export default class TimeUnitPipeline {
     constructor(timeRelations=[]) {
         this.timeRelations = timeRelations;
     }
+
+    convert() {
+        for (relation in timeRelations) {
+            if (relation.fromUnit.value < currentPer) { break; }
+            relation.convert()
+        }
+    }
 }
