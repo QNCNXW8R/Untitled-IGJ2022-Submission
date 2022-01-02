@@ -6,13 +6,13 @@
     let speedMult = 1
 
     var seconds = new TimeUnit('Seconds')
-    var minutes = new TimeUnit('Minutes')
-    var hours = new TimeUnit('Hours')
-    var days = new TimeUnit('Days')
-    var years = new TimeUnit('Years')
-    var epochs = new TimeUnit('Epochs')
-    var eons = new TimeUnit('Eons')
-    var heatDeaths = new TimeUnit('Heat Deaths')
+    var minutes = new TimeUnit('Minutes', 0, 0, function() {return seconds.total >= 30}) //, function() {return seconds.total >= 30}) // Require upgrade here in future
+    var hours = new TimeUnit('Hours', 0, 0, function() {return minutes.total >= 30})
+    var days = new TimeUnit('Days', 0, 0, function() {return hours.total >= 12})
+    var years = new TimeUnit('Years', 0, 0, function() {return days.total >= 90})
+    var epochs = new TimeUnit('Epochs', 0, 0, function() {return years.total >= 1000})
+    var eons = new TimeUnit('Eons', 0, 0, function() {return epochs.total >= 1000})
+    var heatDeaths = new TimeUnit('Heat Deaths', 0, 0, function() {return eons.total >= 1000})
 
     var secondsToMinutes = new TimeUnitRelation(seconds, minutes, 60, 60, 10)
     var minutesToHours = new TimeUnitRelation(minutes, hours, 60, 60, 15)
@@ -62,33 +62,41 @@
     <div class='row'>
         <div class='col-1'>Units:</div>
         {#each pipeline.getTimeUnits() as unit}
-            <div class='col-1'>
-                {unit.name}
-            </div>
+            {#if unit.visible()}
+                <div class='col-1'>
+                    {unit.requirement() ? unit.name : '???'}
+                </div>
+            {/if}
         {/each}
     </div>
     <div class='row'>
         <div class='col-1'>Amount:</div>
         {#each pipeline.getTimeUnits() as unit}
-            <div class='col-1'>
-                {Math.floor(unit.value)}
-            </div>
+            {#if unit.visible()}
+                <div class='col-1'>
+                    {unit.requirement() ? Math.floor(unit.value) : '?'}
+                </div>
+            {/if}
         {/each}
     </div>
     <div class='row'>
         <div class='col-1'>Maximum:</div>
         {#each pipeline.timeUnitRelations as relation}
-            <div class='col-1'>
-                {Math.floor(relation.currentPer)}
-            </div>
+            {#if relation.fromUnit.visible()}
+                <div class='col-1'>
+                    {relation.fromUnit.requirement() ? Math.floor(relation.currentPer) : '?'}
+                </div>
+            {/if}
         {/each}
     </div>
     <div class='row'>
         <div class='col-1'>Multiplier:</div>
         {#each pipeline.timeUnitRelations as relation}
-            <div class='col-1'>
-                {relation.getRatio().toPrecision(5)}
-            </div>
+        {#if relation.fromUnit.visible()}
+                <div class='col-1'>
+                    {relation.fromUnit.requirement() ? relation.getRatio().toPrecision(5) : '?'}
+                </div>
+            {/if}
         {/each}
     </div>
 </div>
