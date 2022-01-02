@@ -450,53 +450,53 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[16] = list[i];
+    	child_ctx[22] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[16] = list[i];
+    	child_ctx[22] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[21] = list[i];
+    	child_ctx[27] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[21] = list[i];
+    	child_ctx[27] = list[i];
     	return child_ctx;
     }
 
-    // (57:8) {#each pipeline.getTimeUnits() as unit}
+    // (64:8) {#each pipeline.getTimeUnits() as unit}
     function create_each_block_3(ctx) {
-    	let td;
-    	let t0_value = /*unit*/ ctx[21].name + "";
+    	let div;
+    	let t0_value = /*unit*/ ctx[27].name + "";
     	let t0;
     	let t1;
 
     	const block = {
     		c: function create() {
-    			td = element("td");
+    			div = element("div");
     			t0 = text(t0_value);
     			t1 = space();
-    			attr_dev(td, "class", "svelte-1jjc0t3");
-    			add_location(td, file, 57, 12, 1833);
+    			attr_dev(div, "class", "col-1");
+    			add_location(div, file, 64, 12, 2321);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, td, anchor);
-    			append_dev(td, t0);
-    			append_dev(td, t1);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*pipeline*/ 2 && t0_value !== (t0_value = /*unit*/ ctx[21].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty[0] & /*pipeline*/ 2 && t0_value !== (t0_value = /*unit*/ ctx[27].name + "")) set_data_dev(t0, t0_value);
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(td);
+    			if (detaching) detach_dev(div);
     		}
     	};
 
@@ -504,38 +504,38 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(57:8) {#each pipeline.getTimeUnits() as unit}",
+    		source: "(64:8) {#each pipeline.getTimeUnits() as unit}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (66:12) {#each pipeline.getTimeUnits() as unit}
+    // (72:8) {#each pipeline.getTimeUnits() as unit}
     function create_each_block_2(ctx) {
-    	let td;
-    	let t0_value = Math.floor(/*unit*/ ctx[21].value) + "";
+    	let div;
+    	let t0_value = Math.floor(/*unit*/ ctx[27].value) + "";
     	let t0;
     	let t1;
 
     	const block = {
     		c: function create() {
-    			td = element("td");
+    			div = element("div");
     			t0 = text(t0_value);
     			t1 = space();
-    			attr_dev(td, "class", "svelte-1jjc0t3");
-    			add_location(td, file, 66, 12, 2040);
+    			attr_dev(div, "class", "col-1");
+    			add_location(div, file, 72, 12, 2546);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, td, anchor);
-    			append_dev(td, t0);
-    			append_dev(td, t1);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*pipeline*/ 2 && t0_value !== (t0_value = Math.floor(/*unit*/ ctx[21].value) + "")) set_data_dev(t0, t0_value);
+    			if (dirty[0] & /*pipeline*/ 2 && t0_value !== (t0_value = Math.floor(/*unit*/ ctx[27].value) + "")) set_data_dev(t0, t0_value);
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(td);
+    			if (detaching) detach_dev(div);
     		}
     	};
 
@@ -543,38 +543,38 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(66:12) {#each pipeline.getTimeUnits() as unit}",
+    		source: "(72:8) {#each pipeline.getTimeUnits() as unit}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (74:12) {#each pipeline.timeUnitRelations as relation}
+    // (80:8) {#each pipeline.timeUnitRelations as relation}
     function create_each_block_1(ctx) {
-    	let td;
-    	let t0_value = Math.floor(/*relation*/ ctx[16].currentPer) + "";
+    	let div;
+    	let t0_value = Math.floor(/*relation*/ ctx[22].currentPer) + "";
     	let t0;
     	let t1;
 
     	const block = {
     		c: function create() {
-    			td = element("td");
+    			div = element("div");
     			t0 = text(t0_value);
     			t1 = space();
-    			attr_dev(td, "class", "svelte-1jjc0t3");
-    			add_location(td, file, 74, 12, 2252);
+    			attr_dev(div, "class", "col-1");
+    			add_location(div, file, 80, 12, 2792);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, td, anchor);
-    			append_dev(td, t0);
-    			append_dev(td, t1);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*pipeline*/ 2 && t0_value !== (t0_value = Math.floor(/*relation*/ ctx[16].currentPer) + "")) set_data_dev(t0, t0_value);
+    			if (dirty[0] & /*pipeline*/ 2 && t0_value !== (t0_value = Math.floor(/*relation*/ ctx[22].currentPer) + "")) set_data_dev(t0, t0_value);
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(td);
+    			if (detaching) detach_dev(div);
     		}
     	};
 
@@ -582,38 +582,38 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(74:12) {#each pipeline.timeUnitRelations as relation}",
+    		source: "(80:8) {#each pipeline.timeUnitRelations as relation}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (82:12) {#each pipeline.timeUnitRelations as relation}
+    // (88:8) {#each pipeline.timeUnitRelations as relation}
     function create_each_block(ctx) {
-    	let td;
-    	let t0_value = /*relation*/ ctx[16].getRatio().toPrecision(5) + "";
+    	let div;
+    	let t0_value = /*relation*/ ctx[22].getRatio().toPrecision(5) + "";
     	let t0;
     	let t1;
 
     	const block = {
     		c: function create() {
-    			td = element("td");
+    			div = element("div");
     			t0 = text(t0_value);
     			t1 = space();
-    			attr_dev(td, "class", "svelte-1jjc0t3");
-    			add_location(td, file, 82, 12, 2538);
+    			attr_dev(div, "class", "col-1");
+    			add_location(div, file, 88, 12, 3050);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, td, anchor);
-    			append_dev(td, t0);
-    			append_dev(td, t1);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*pipeline*/ 2 && t0_value !== (t0_value = /*relation*/ ctx[16].getRatio().toPrecision(5) + "")) set_data_dev(t0, t0_value);
+    			if (dirty[0] & /*pipeline*/ 2 && t0_value !== (t0_value = /*relation*/ ctx[22].getRatio().toPrecision(5) + "")) set_data_dev(t0, t0_value);
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(td);
+    			if (detaching) detach_dev(div);
     		}
     	};
 
@@ -621,7 +621,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(82:12) {#each pipeline.timeUnitRelations as relation}",
+    		source: "(88:8) {#each pipeline.timeUnitRelations as relation}",
     		ctx
     	});
 
@@ -642,22 +642,21 @@ var app = (function () {
     	let t7;
     	let button1;
     	let t9;
-    	let table;
-    	let thead;
-    	let td0;
+    	let div8;
+    	let div1;
+    	let div0;
     	let t11;
     	let t12;
-    	let tbody;
-    	let tr0;
-    	let td1;
+    	let div3;
+    	let div2;
     	let t14;
     	let t15;
-    	let tr1;
-    	let td2;
+    	let div5;
+    	let div4;
     	let t17;
     	let t18;
-    	let tr2;
-    	let td3;
+    	let div7;
+    	let div6;
     	let t20;
     	let t21;
     	let p0;
@@ -722,10 +721,10 @@ var app = (function () {
     			button1 = element("button");
     			button1.textContent = "Stop";
     			t9 = space();
-    			table = element("table");
-    			thead = element("thead");
-    			td0 = element("td");
-    			td0.textContent = "Units:";
+    			div8 = element("div");
+    			div1 = element("div");
+    			div0 = element("div");
+    			div0.textContent = "Units:";
     			t11 = space();
 
     			for (let i = 0; i < each_blocks_3.length; i += 1) {
@@ -733,10 +732,9 @@ var app = (function () {
     			}
 
     			t12 = space();
-    			tbody = element("tbody");
-    			tr0 = element("tr");
-    			td1 = element("td");
-    			td1.textContent = "Amount:";
+    			div3 = element("div");
+    			div2 = element("div");
+    			div2.textContent = "Amount:";
     			t14 = space();
 
     			for (let i = 0; i < each_blocks_2.length; i += 1) {
@@ -744,9 +742,9 @@ var app = (function () {
     			}
 
     			t15 = space();
-    			tr1 = element("tr");
-    			td2 = element("td");
-    			td2.textContent = "Max:";
+    			div5 = element("div");
+    			div4 = element("div");
+    			div4.textContent = "Maximum:";
     			t17 = space();
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
@@ -754,9 +752,9 @@ var app = (function () {
     			}
 
     			t18 = space();
-    			tr2 = element("tr");
-    			td3 = element("td");
-    			td3.textContent = "Squeezing more of this unit into the next one is speeding up time by:";
+    			div7 = element("div");
+    			div6 = element("div");
+    			div6.textContent = "Multiplier:";
     			t20 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -771,39 +769,43 @@ var app = (function () {
     			p1 = element("p");
     			t25 = text("Points are speeding up time by a factor of: ");
     			t26 = text(t26_value);
-    			add_location(h1, file, 45, 0, 1455);
-    			add_location(h3, file, 46, 0, 1479);
+    			attr_dev(h1, "class", "title");
+    			add_location(h1, file, 51, 0, 1885);
+    			add_location(h3, file, 52, 0, 1923);
     			attr_dev(input0, "type", "number");
     			attr_dev(input0, "min", "0");
     			attr_dev(input0, "max", "100");
-    			add_location(input0, file, 48, 1, 1521);
+    			add_location(input0, file, 54, 1, 1965);
     			attr_dev(input1, "type", "range");
     			attr_dev(input1, "min", "0");
     			attr_dev(input1, "max", "100");
-    			add_location(input1, file, 49, 1, 1580);
-    			add_location(label, file, 47, 0, 1511);
+    			add_location(input1, file, 55, 1, 2024);
+    			add_location(label, file, 53, 0, 1955);
     			attr_dev(button0, "onclick", "start()");
-    			add_location(button0, file, 51, 0, 1647);
+    			add_location(button0, file, 57, 0, 2091);
     			attr_dev(button1, "onclick", "stop()");
-    			add_location(button1, file, 52, 0, 1687);
-    			attr_dev(td0, "class", "svelte-1jjc0t3");
-    			add_location(td0, file, 55, 8, 1755);
-    			add_location(thead, file, 54, 4, 1738);
-    			attr_dev(td1, "class", "svelte-1jjc0t3");
-    			add_location(td1, file, 64, 12, 1957);
-    			add_location(tr0, file, 63, 8, 1939);
-    			attr_dev(td2, "class", "svelte-1jjc0t3");
-    			add_location(td2, file, 72, 12, 2165);
-    			add_location(tr1, file, 71, 8, 2147);
-    			attr_dev(td3, "class", "svelte-1jjc0t3");
-    			add_location(td3, file, 80, 12, 2386);
-    			add_location(tr2, file, 79, 8, 2368);
-    			add_location(tbody, file, 62, 4, 1922);
-    			attr_dev(table, "class", "svelte-1jjc0t3");
-    			add_location(table, file, 53, 0, 1725);
+    			add_location(button1, file, 58, 0, 2131);
+    			attr_dev(div0, "class", "col-1");
+    			add_location(div0, file, 62, 8, 2227);
+    			attr_dev(div1, "class", "row");
+    			add_location(div1, file, 61, 4, 2200);
+    			attr_dev(div2, "class", "col-1");
+    			add_location(div2, file, 70, 8, 2451);
+    			attr_dev(div3, "class", "row");
+    			add_location(div3, file, 69, 4, 2424);
+    			attr_dev(div4, "class", "col-1");
+    			add_location(div4, file, 78, 8, 2689);
+    			attr_dev(div5, "class", "row");
+    			add_location(div5, file, 77, 4, 2662);
+    			attr_dev(div6, "class", "col-1");
+    			add_location(div6, file, 86, 8, 2944);
+    			attr_dev(div7, "class", "row");
+    			add_location(div7, file, 85, 4, 2917);
+    			attr_dev(div8, "class", "container");
+    			add_location(div8, file, 60, 0, 2171);
     			attr_dev(p0, "id", "pointsAmount");
-    			add_location(p0, file, 90, 0, 2675);
-    			add_location(p1, file, 91, 0, 2728);
+    			add_location(p0, file, 95, 0, 3184);
+    			add_location(p1, file, 96, 0, 3237);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -824,41 +826,40 @@ var app = (function () {
     			insert_dev(target, t7, anchor);
     			insert_dev(target, button1, anchor);
     			insert_dev(target, t9, anchor);
-    			insert_dev(target, table, anchor);
-    			append_dev(table, thead);
-    			append_dev(thead, td0);
-    			append_dev(thead, t11);
+    			insert_dev(target, div8, anchor);
+    			append_dev(div8, div1);
+    			append_dev(div1, div0);
+    			append_dev(div1, t11);
 
     			for (let i = 0; i < each_blocks_3.length; i += 1) {
-    				each_blocks_3[i].m(thead, null);
+    				each_blocks_3[i].m(div1, null);
     			}
 
-    			append_dev(table, t12);
-    			append_dev(table, tbody);
-    			append_dev(tbody, tr0);
-    			append_dev(tr0, td1);
-    			append_dev(tr0, t14);
+    			append_dev(div8, t12);
+    			append_dev(div8, div3);
+    			append_dev(div3, div2);
+    			append_dev(div3, t14);
 
     			for (let i = 0; i < each_blocks_2.length; i += 1) {
-    				each_blocks_2[i].m(tr0, null);
+    				each_blocks_2[i].m(div3, null);
     			}
 
-    			append_dev(tbody, t15);
-    			append_dev(tbody, tr1);
-    			append_dev(tr1, td2);
-    			append_dev(tr1, t17);
+    			append_dev(div8, t15);
+    			append_dev(div8, div5);
+    			append_dev(div5, div4);
+    			append_dev(div5, t17);
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
-    				each_blocks_1[i].m(tr1, null);
+    				each_blocks_1[i].m(div5, null);
     			}
 
-    			append_dev(tbody, t18);
-    			append_dev(tbody, tr2);
-    			append_dev(tr2, td3);
-    			append_dev(tr2, t20);
+    			append_dev(div8, t18);
+    			append_dev(div8, div7);
+    			append_dev(div7, div6);
+    			append_dev(div7, t20);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(tr2, null);
+    				each_blocks[i].m(div7, null);
     			}
 
     			insert_dev(target, t21, anchor);
@@ -880,16 +881,16 @@ var app = (function () {
     				mounted = true;
     			}
     		},
-    		p: function update(ctx, [dirty]) {
-    			if (dirty & /*speedMult*/ 1 && to_number(input0.value) !== /*speedMult*/ ctx[0]) {
+    		p: function update(ctx, dirty) {
+    			if (dirty[0] & /*speedMult*/ 1 && to_number(input0.value) !== /*speedMult*/ ctx[0]) {
     				set_input_value(input0, /*speedMult*/ ctx[0]);
     			}
 
-    			if (dirty & /*speedMult*/ 1) {
+    			if (dirty[0] & /*speedMult*/ 1) {
     				set_input_value(input1, /*speedMult*/ ctx[0]);
     			}
 
-    			if (dirty & /*pipeline*/ 2) {
+    			if (dirty[0] & /*pipeline*/ 2) {
     				each_value_3 = /*pipeline*/ ctx[1].getTimeUnits();
     				validate_each_argument(each_value_3);
     				let i;
@@ -902,7 +903,7 @@ var app = (function () {
     					} else {
     						each_blocks_3[i] = create_each_block_3(child_ctx);
     						each_blocks_3[i].c();
-    						each_blocks_3[i].m(thead, null);
+    						each_blocks_3[i].m(div1, null);
     					}
     				}
 
@@ -913,7 +914,7 @@ var app = (function () {
     				each_blocks_3.length = each_value_3.length;
     			}
 
-    			if (dirty & /*Math, pipeline*/ 2) {
+    			if (dirty[0] & /*pipeline*/ 2) {
     				each_value_2 = /*pipeline*/ ctx[1].getTimeUnits();
     				validate_each_argument(each_value_2);
     				let i;
@@ -926,7 +927,7 @@ var app = (function () {
     					} else {
     						each_blocks_2[i] = create_each_block_2(child_ctx);
     						each_blocks_2[i].c();
-    						each_blocks_2[i].m(tr0, null);
+    						each_blocks_2[i].m(div3, null);
     					}
     				}
 
@@ -937,7 +938,7 @@ var app = (function () {
     				each_blocks_2.length = each_value_2.length;
     			}
 
-    			if (dirty & /*Math, pipeline*/ 2) {
+    			if (dirty[0] & /*pipeline*/ 2) {
     				each_value_1 = /*pipeline*/ ctx[1].timeUnitRelations;
     				validate_each_argument(each_value_1);
     				let i;
@@ -950,7 +951,7 @@ var app = (function () {
     					} else {
     						each_blocks_1[i] = create_each_block_1(child_ctx);
     						each_blocks_1[i].c();
-    						each_blocks_1[i].m(tr1, null);
+    						each_blocks_1[i].m(div5, null);
     					}
     				}
 
@@ -961,7 +962,7 @@ var app = (function () {
     				each_blocks_1.length = each_value_1.length;
     			}
 
-    			if (dirty & /*pipeline*/ 2) {
+    			if (dirty[0] & /*pipeline*/ 2) {
     				each_value = /*pipeline*/ ctx[1].timeUnitRelations;
     				validate_each_argument(each_value);
     				let i;
@@ -974,7 +975,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(tr2, null);
+    						each_blocks[i].m(div7, null);
     					}
     				}
 
@@ -985,8 +986,8 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty & /*points*/ 4 && t23_value !== (t23_value = Math.floor(/*points*/ ctx[2]) + "")) set_data_dev(t23, t23_value);
-    			if (dirty & /*points*/ 4 && t26_value !== (t26_value = (1 + Math.log(/*points*/ ctx[2] + 1)).toPrecision(5) + "")) set_data_dev(t26, t26_value);
+    			if (dirty[0] & /*points*/ 4 && t23_value !== (t23_value = Math.floor(/*points*/ ctx[2]) + "")) set_data_dev(t23, t23_value);
+    			if (dirty[0] & /*points*/ 4 && t26_value !== (t26_value = (1 + Math.log(/*points*/ ctx[2] + 1)).toPrecision(5) + "")) set_data_dev(t26, t26_value);
     		},
     		i: noop,
     		o: noop,
@@ -1001,7 +1002,7 @@ var app = (function () {
     			if (detaching) detach_dev(t7);
     			if (detaching) detach_dev(button1);
     			if (detaching) detach_dev(t9);
-    			if (detaching) detach_dev(table);
+    			if (detaching) detach_dev(div8);
     			destroy_each(each_blocks_3, detaching);
     			destroy_each(each_blocks_2, detaching);
     			destroy_each(each_blocks_1, detaching);
@@ -1035,11 +1036,27 @@ var app = (function () {
     	var hours = new TimeUnit('Hours');
     	var days = new TimeUnit('Days');
     	var years = new TimeUnit('Years');
+    	var epochs = new TimeUnit('Epochs');
+    	var eons = new TimeUnit('Eons');
+    	var heatDeaths = new TimeUnit('Heat Deaths');
     	var secondsToMinutes = new TimeUnitRelation(seconds, minutes, 60, 60, 10);
     	var minutesToHours = new TimeUnitRelation(minutes, hours, 60, 60, 15);
-    	var hoursToDays = new TimeUnitRelation(hours, days, 24, 24, 12);
-    	var daysToYears = new TimeUnitRelation(days, years, 365, 365, 365);
-    	var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours, hoursToDays, daysToYears]);
+    	var hoursToDays = new TimeUnitRelation(hours, days, 24, 24, 6);
+    	var daysToYears = new TimeUnitRelation(days, years, 365, 365, 73);
+    	var yearsToEpochs = new TimeUnitRelation(years, epochs, 10000, 10000, 1000);
+    	var epochsToEons = new TimeUnitRelation(epochs, eons, 100000, 100000, 25000);
+    	var eonsToHeatDeaths = new TimeUnitRelation(eons, heatDeaths, 1000000, 1000000, 1000000);
+
+    	var pipeline = new TimeUnitPipeline([
+    			secondsToMinutes,
+    			minutesToHours,
+    			hoursToDays,
+    			daysToYears,
+    			yearsToEpochs,
+    			epochsToEons,
+    			eonsToHeatDeaths
+    		]);
+
     	var points = 0;
     	var intervalID = -1;
 
@@ -1088,10 +1105,16 @@ var app = (function () {
     		hours,
     		days,
     		years,
+    		epochs,
+    		eons,
+    		heatDeaths,
     		secondsToMinutes,
     		minutesToHours,
     		hoursToDays,
     		daysToYears,
+    		yearsToEpochs,
+    		epochsToEons,
+    		eonsToHeatDeaths,
     		pipeline,
     		points,
     		intervalID,
@@ -1105,10 +1128,16 @@ var app = (function () {
     		if ('hours' in $$props) hours = $$props.hours;
     		if ('days' in $$props) days = $$props.days;
     		if ('years' in $$props) years = $$props.years;
+    		if ('epochs' in $$props) epochs = $$props.epochs;
+    		if ('eons' in $$props) eons = $$props.eons;
+    		if ('heatDeaths' in $$props) heatDeaths = $$props.heatDeaths;
     		if ('secondsToMinutes' in $$props) secondsToMinutes = $$props.secondsToMinutes;
     		if ('minutesToHours' in $$props) minutesToHours = $$props.minutesToHours;
     		if ('hoursToDays' in $$props) hoursToDays = $$props.hoursToDays;
     		if ('daysToYears' in $$props) daysToYears = $$props.daysToYears;
+    		if ('yearsToEpochs' in $$props) yearsToEpochs = $$props.yearsToEpochs;
+    		if ('epochsToEons' in $$props) epochsToEons = $$props.epochsToEons;
+    		if ('eonsToHeatDeaths' in $$props) eonsToHeatDeaths = $$props.eonsToHeatDeaths;
     		if ('pipeline' in $$props) $$invalidate(1, pipeline = $$props.pipeline);
     		if ('points' in $$props) $$invalidate(2, points = $$props.points);
     		if ('intervalID' in $$props) intervalID = $$props.intervalID;
@@ -1124,7 +1153,7 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment, safe_not_equal, {});
+    		init(this, options, instance, create_fragment, safe_not_equal, {}, null, [-1, -1]);
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,

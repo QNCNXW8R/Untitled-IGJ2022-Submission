@@ -10,13 +10,19 @@
     var hours = new TimeUnit('Hours')
     var days = new TimeUnit('Days')
     var years = new TimeUnit('Years')
+    var epochs = new TimeUnit('Epochs')
+    var eons = new TimeUnit('Eons')
+    var heatDeaths = new TimeUnit('Heat Deaths')
 
     var secondsToMinutes = new TimeUnitRelation(seconds, minutes, 60, 60, 10)
     var minutesToHours = new TimeUnitRelation(minutes, hours, 60, 60, 15)
-    var hoursToDays = new TimeUnitRelation(hours, days, 24, 24, 12)
-    var daysToYears = new TimeUnitRelation(days, years, 365, 365, 365)
+    var hoursToDays = new TimeUnitRelation(hours, days, 24, 24, 6)
+    var daysToYears = new TimeUnitRelation(days, years, 365, 365, 73)
+    var yearsToEpochs = new TimeUnitRelation(years, epochs, 10000, 10000, 1000)
+    var epochsToEons = new TimeUnitRelation(epochs, eons, 100000, 100000, 25000)
+    var eonsToHeatDeaths = new TimeUnitRelation(eons, heatDeaths, 1000000, 1000000, 1000000)
 
-    var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours, hoursToDays, daysToYears])
+    var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours, hoursToDays, daysToYears, yearsToEpochs, epochsToEons, eonsToHeatDeaths])
 
     var points = 0
 
@@ -43,7 +49,7 @@
     }
 </script>
 
-<h1>Untitled Game</h1>
+<h1 class='title'>Untitled Game</h1>
 <h3>Dev Speed Multiplier:</h3>
 <label>
 	<input type=number bind:value={speedMult} min=0 max=100>
@@ -51,52 +57,41 @@
 </label>
 <button onclick=start()>Start</button>
 <button onclick=stop()>Stop</button>
-<table>
-    <thead>
-        <td>Units:</td>
+
+<div class='container'>
+    <div class='row'>
+        <div class='col-1'>Units:</div>
         {#each pipeline.getTimeUnits() as unit}
-            <td>
+            <div class='col-1'>
                 {unit.name}
-            </td>
+            </div>
         {/each}
-    </thead>
-    <tbody>
-        <tr>
-            <td>Amount:</td>
-            {#each pipeline.getTimeUnits() as unit}
-            <td>
+    </div>
+    <div class='row'>
+        <div class='col-1'>Amount:</div>
+        {#each pipeline.getTimeUnits() as unit}
+            <div class='col-1'>
                 {Math.floor(unit.value)}
-            </td>
+            </div>
         {/each}
-        </tr>
-        <tr>
-            <td>Max:</td>
-            {#each pipeline.timeUnitRelations as relation}
-            <td>
+    </div>
+    <div class='row'>
+        <div class='col-1'>Maximum:</div>
+        {#each pipeline.timeUnitRelations as relation}
+            <div class='col-1'>
                 {Math.floor(relation.currentPer)}
-            </td>
+            </div>
         {/each}
-        </tr>
-        <tr>
-            <td>Squeezing more of this unit into the next one is speeding up time by:</td>
-            {#each pipeline.timeUnitRelations as relation}
-            <td>
+    </div>
+    <div class='row'>
+        <div class='col-1'>Multiplier:</div>
+        {#each pipeline.timeUnitRelations as relation}
+            <div class='col-1'>
                 {relation.getRatio().toPrecision(5)}
-            </td>
+            </div>
         {/each}
-        </tr>
-    </tbody>
-</table>
+    </div>
+</div>
 
 <p id=pointsAmount>Points: {Math.floor(points)}</p>
 <p>Points are speeding up time by a factor of: {(1 + Math.log(points+1)).toPrecision(5)}</p>
-
-<style>
-    table {
-        table-layout: fixed;
-    }
-
-    td {
-        width: 300px;
-    }
-</style>
