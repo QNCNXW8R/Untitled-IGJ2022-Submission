@@ -1,15 +1,22 @@
 import TimeUnit from "./TimeUnit";
 
 export default class TimeUnitRelation {
-    constructor(fromUnit=TimeUnit(), toUnit=TimeUnit(), basePer=1, currentPer=1) {
+    constructor(fromUnit=TimeUnit(), toUnit=TimeUnit(), basePer=1, currentPer=1, increasePer=0) {
         this.fromUnit = fromUnit
         this.toUnit = toUnit
         this.basePer = basePer
         this.currentPer = currentPer
+        this.increasePer = increasePer
     }
 
     convert() {
-        toUnit.value += Math.floor(fromUnit.value / currentPer)
-        fromUnit.value %= currentPer
+        this.toUnit.value += Math.floor(this.fromUnit.value / this.currentPer)
+        this.toUnit.total += Math.floor(this.fromUnit.value / this.currentPer)
+        this.fromUnit.value %= this.currentPer
+        this.currentPer = this.basePer + this.increasePer * this.toUnit.value
+    }
+
+    getRatio() {
+        return this.currentPer / this.basePer
     }
 }

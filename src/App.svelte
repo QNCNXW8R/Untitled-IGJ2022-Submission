@@ -1,4 +1,19 @@
 <script>
+    import TimeUnit from './Classes/TimeUnit'
+    import TimeUnitRelation from './Classes/TimeUnitRelation'
+    import TimeUnitPipeline from './Classes/TimeUnitPipeline'
+
+    var seconds = new TimeUnit('Seconds')
+    var minutes = new TimeUnit('Minutes')
+    var hours = new TimeUnit('Hours')
+
+    var secondsToMinutes = new TimeUnitRelation(seconds, minutes, 60, 60, 10)
+    var minutesToHours = new TimeUnitRelation(minutes, hours, 60, 60, 15)
+
+    var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours])
+
+
+
     var resource_names = ['seconds', 'minutes', 'hours', 'days', 'years']
 
     var resource_values = {
@@ -29,6 +44,8 @@
     var pointRate = 1
     var points = 0
 
+    var points2 = 0
+
     window.start = function() {
         console.log("Starting...")
         setInterval(() => onTick(), 50);
@@ -40,7 +57,15 @@
 
     function onTick() {
         var tickrate = (1 + Math.log(points+1)) * getTicksPerEpoch() / baseTicksPerEpoch
+        let tickrate2 = (1 + Math.log(points2+1)) * pipeline.getRatio()
         points += tickrate
+        points2 += tickrate2
+
+        pipeline.timeUnitRelations[0].fromUnit.value += tickrate
+        pipeline.timeUnitRelations[0].fromUnit.total += tickrate
+        pipeline.convert()
+
+
 
         resource_values['seconds'] += tickrate
         resource_values['minutes'] += tickrate/resource_pers['seconds']
@@ -107,6 +132,49 @@
 <p id=pointsAmount>{points}</p>
 <p>Points are speeding up time by a factor of:</p>
 <p id=pointsFactor>{(1 + Math.log(points+1)).toPrecision(5)}</p>
+
+
+<table>
+    <thead>
+        <td>Units:</td>
+        {#each pipeline.getTimeUnits() as unit}
+            <td>
+                {unit.name}
+            </td>
+        {/each}
+    </thead>
+    <tbody>
+        <tr>
+            <td>Amount:</td>
+            {#each pipeline.getTimeUnits() as unit}
+            <td>
+                {unit.value}
+            </td>
+        {/each}
+        </tr>
+        <tr>
+            <td>Max:</td>
+            {#each pipeline.timeUnitRelations as relation}
+            <td>
+                {relation.currentPer}
+            </td>
+        {/each}
+        </tr>
+        <tr>
+            <td>Squeezing more of this unit into the next one is speeding up time by:</td>
+            {#each pipeline.timeUnitRelations as relation}
+            <td>
+                {relation.getRatio()}
+            </td>
+        {/each}
+        </tr>
+    </tbody>
+</table>
+
+<p>Points:</p>
+<p id=pointsAmount>{points2}</p>
+<p>Points are speeding up time by a factor of:</p>
+<p id=pointsFactor>{(1 + Math.log(points2+1)).toPrecision(5)}</p>
 
 <style>
     table {
