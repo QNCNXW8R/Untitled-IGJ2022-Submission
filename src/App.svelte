@@ -3,24 +3,38 @@
     import TimeUnitRelation from './Classes/TimeUnitRelation'
     import TimeUnitPipeline from './Classes/TimeUnitPipeline'
 
+    let speedMult = 1
+
     var seconds = new TimeUnit('Seconds')
     var minutes = new TimeUnit('Minutes')
     var hours = new TimeUnit('Hours')
+    var days = new TimeUnit('Days')
+    var years = new TimeUnit('Years')
 
     var secondsToMinutes = new TimeUnitRelation(seconds, minutes, 60, 60, 10)
     var minutesToHours = new TimeUnitRelation(minutes, hours, 60, 60, 15)
+    var hoursToDays = new TimeUnitRelation(hours, days, 24, 24, 12)
+    var daysToYears = new TimeUnitRelation(days, years, 365, 365, 365)
 
-    var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours])
+    var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours, hoursToDays, daysToYears])
 
     var points = 0
 
+    var intervalID = -1
+
     window.start = function() {
         console.log("Starting...")
-        setInterval(() => onTick(), 50);
+        intervalID = setInterval(() => onTick(), 50);
+    }
+
+    window.stop = function() {
+        console.log("Stopping...")
+        clearInterval(intervalID)
+        intervalID = -1
     }
 
     function onTick() {
-        let tickrate = (1 + Math.log(points+1)) * pipeline.getRatio()
+        let tickrate = (1 + Math.log(points+1)) * pipeline.getRatio() * speedMult/20
         points += tickrate
 
         pipeline.timeUnitRelations[0].fromUnit.value += tickrate
@@ -29,8 +43,14 @@
     }
 </script>
 
-<button onclick=start()>Go</button>
 <h1>Untitled Game</h1>
+<h3>Dev Speed Multiplier:</h3>
+<label>
+	<input type=number bind:value={speedMult} min=0 max=100>
+	<input type=range bind:value={speedMult} min=0 max=100>
+</label>
+<button onclick=start()>Start</button>
+<button onclick=stop()>Stop</button>
 <table>
     <thead>
         <td>Units:</td>
@@ -68,10 +88,8 @@
     </tbody>
 </table>
 
-<p>Points:</p>
-<p id=pointsAmount>{points}</p>
-<p>Points are speeding up time by a factor of:</p>
-<p id=pointsFactor>{(1 + Math.log(points+1)).toPrecision(5)}</p>
+<p id=pointsAmount>Points: {Math.floor(points)}</p>
+<p>Points are speeding up time by a factor of: {(1 + Math.log(points+1)).toPrecision(5)}</p>
 
 <style>
     table {
