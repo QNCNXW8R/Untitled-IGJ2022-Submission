@@ -69,65 +69,67 @@
     }
 </script>
 
-<h1 class='title'>Untitled Game</h1>
-<h3>Dev Speed Multiplier:</h3>
-<label>
-	<input type=number bind:value={speedMult} min=0 max=100>
-	<input type=range bind:value={speedMult} min=0 max=100>
-</label>
-<button on:click={start}>Start</button>
-<button on:click={stop}>Stop</button>
+<div class='container content'>
+    <h1 class='title'>Untitled Game</h1>
+    <h3>Dev Speed Multiplier:</h3>
+    <label>
+        <input type=number bind:value={speedMult} min=0 max=100>
+        <input type=range bind:value={speedMult} min=0 max=100>
+    </label>
+    <button on:click={start}>Start</button>
+    <button on:click={stop}>Stop</button>
 
-<div class='container'>
-    <div class='row'>
-        <div class='col-1'>Units:</div>
-        {#each pipeline.getTimeUnits() as unit}
-            {#if unit.visible()}
-                <div class='col-1'>
-                    {unit.requirement() ? unit.name : '???'}
-                </div>
-            {/if}
-        {/each}
-    </div>
-    <div class='row'>
-        <div class='col-1'>Amount:</div>
-        {#each pipeline.getTimeUnits() as unit}
-            {#if unit.visible()}
-                <div class='col-1'>
-                    {unit.requirement() ? Math.floor(unit.value) : '?'}
-                </div>
-            {/if}
-        {/each}
-    </div>
-    <div class='row'>
-        <div class='col-1'>Maximum:</div>
-        {#each pipeline.timeUnitRelations as relation}
+    <div class='container'>
+        <div class='row'>
+            <div class='col-1'>Units:</div>
+            {#each pipeline.getTimeUnits() as unit}
+                {#if unit.visible()}
+                    <div class='col-1'>
+                        {unit.requirement() ? unit.name : '???'}
+                    </div>
+                {/if}
+            {/each}
+        </div>
+        <div class='row'>
+            <div class='col-1'>Amount:</div>
+            {#each pipeline.getTimeUnits() as unit}
+                {#if unit.visible()}
+                    <div class='col-1'>
+                        {unit.requirement() ? Math.floor(unit.value) : '?'}
+                    </div>
+                {/if}
+            {/each}
+        </div>
+        <div class='row'>
+            <div class='col-1'>Maximum:</div>
+            {#each pipeline.timeUnitRelations as relation}
+                {#if relation.fromUnit.visible()}
+                    <div class='col-1'>
+                        {relation.fromUnit.requirement() ? Math.floor(relation.currentPer) : '?'}
+                    </div>
+                {/if}
+            {/each}
+        </div>
+        <div class='row'>
+            <div class='col-1'>Multiplier:</div>
+            {#each pipeline.timeUnitRelations as relation}
             {#if relation.fromUnit.visible()}
-                <div class='col-1'>
-                    {relation.fromUnit.requirement() ? Math.floor(relation.currentPer) : '?'}
-                </div>
+                    <div class='col-1'>
+                        {relation.fromUnit.requirement() ? relation.getRatio().toPrecision(5) : '?'}
+                    </div>
+                {/if}
+            {/each}
+        </div>
+    </div>
+
+    <p id=pointsAmount>Points: {Math.floor(points)}</p>
+    <p>Points are speeding up time by a factor of: {(1 + Math.log(points+1)).toPrecision(5)}</p>
+
+    <ul>
+        {#each upgrades as upgrade}
+            {#if upgrade.visible()}
+                <li><button on:click={function() {attemptPurchase(upgrade)}}>{upgrade.name}: {upgrade.cost} {upgrade.costUnit.name}</button></li>
             {/if}
         {/each}
-    </div>
-    <div class='row'>
-        <div class='col-1'>Multiplier:</div>
-        {#each pipeline.timeUnitRelations as relation}
-        {#if relation.fromUnit.visible()}
-                <div class='col-1'>
-                    {relation.fromUnit.requirement() ? relation.getRatio().toPrecision(5) : '?'}
-                </div>
-            {/if}
-        {/each}
-    </div>
+    </ul>
 </div>
-
-<p id=pointsAmount>Points: {Math.floor(points)}</p>
-<p>Points are speeding up time by a factor of: {(1 + Math.log(points+1)).toPrecision(5)}</p>
-
-<ul>
-    {#each upgrades as upgrade}
-        {#if upgrade.visible()}
-            <li><button on:click={function() {attemptPurchase(upgrade)}}>{upgrade.name}: {upgrade.cost} {upgrade.costUnit.name}</button></li>
-        {/if}
-    {/each}
-</ul>
