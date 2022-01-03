@@ -28,8 +28,15 @@
     var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours, hoursToDays, daysToYears, yearsToEpochs, epochsToEons, eonsToHeatDeaths]);
 
     var upgrades: Upgrade[] = [
-        new Upgrade('Double Minutes', function() {return minutes.total >= 0}, minutes, 10, function() {minutes.multiplier.multiplyFactor(2)}),
-        new Upgrade('Triple Minutes', function() {return minutes.total >= 1}, minutes, 15, function() {minutes.multiplier.multiplyFactor(3)})
+        //  Upgrade(name, visibilityFunction, costUnit, cost, upgradeTarget)
+        new Upgrade('Increase Seconds base by 100%', function() {return seconds.total >= 5}, seconds, 10, function() {seconds.multiplier.addBase(1)}),
+        new Upgrade('Increase Seconds base by 100% again', function() {return seconds.total >= 20}, seconds, 30, function() {seconds.multiplier.addBase(1)}),
+        new Upgrade('Increase Seconds base by another 100%', function() {return seconds.total >= 40}, seconds, 60, function() {seconds.multiplier.addBase(1)}),
+        new Upgrade('Increase Seconds base by yet another 100%', function() {return seconds.total >= 80}, seconds, 100, function() {seconds.multiplier.addBase(1)}),
+        new Upgrade('Double Minutes', function() {return minutes.total >= 5}, minutes, 10, function() {minutes.multiplier.multiplyFactor(2)}),
+        new Upgrade('Triple Minutes', function() {return minutes.total >= 10}, minutes, 15, function() {minutes.multiplier.multiplyFactor(3)}),
+        new Upgrade('Seconds gain is squared', function() {return hours.total >= 1}, hours, 1, function() {seconds.exponent.multiplyFactor(2)}),
+        new Upgrade('Increase Minutes gain by total Hours', function() {return hours.total >= 1}, hours, 1, function() {minutes.multiplier.addBaseFunction(function() {return hours.total})})
     ];
 
     var points = 0;
@@ -60,11 +67,13 @@
     }
 
     function onTick(): void {
-        let tickrate = (1 + Math.log(points+1)) * pipeline.getRatio() * speedMult/20;
-        points += tickrate;
+        let tickrate = speedMult/20
+        let firstUnitMod = Math.pow(pipeline.timeUnitRelations[0].fromUnit.multiplier.calculate(), pipeline.timeUnitRelations[0].fromUnit.exponent.calculate())
+        let increase = firstUnitMod * (1 + Math.log(points+1)) * pipeline.getRatio() * tickrate
+        points += increase;
         upgrades = upgrades; // Without this line, newly-visible upgrades don't appear because reasons
-        pipeline.timeUnitRelations[0].fromUnit.value += tickrate;
-        pipeline.timeUnitRelations[0].fromUnit.total += tickrate;
+        pipeline.timeUnitRelations[0].fromUnit.value += increase;
+        pipeline.timeUnitRelations[0].fromUnit.total += increase;
         pipeline.convert();
     }
 </script>

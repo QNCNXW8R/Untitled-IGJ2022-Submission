@@ -537,7 +537,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (74:16) {#if unit.visible()}
+    // (83:16) {#if unit.visible()}
     function create_if_block_4(ctx) {
     	let div;
 
@@ -554,7 +554,7 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			attr_dev(div, "class", "col-1");
-    			add_location(div, file, 74, 20, 3878);
+    			add_location(div, file, 83, 20, 5160);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -575,14 +575,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(74:16) {#if unit.visible()}",
+    		source: "(83:16) {#if unit.visible()}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (73:12) {#each pipeline.getTimeUnits() as unit}
+    // (82:12) {#each pipeline.getTimeUnits() as unit}
     function create_each_block_4(ctx) {
     	let show_if = /*unit*/ ctx[35].visible();
     	let if_block_anchor;
@@ -623,14 +623,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(73:12) {#each pipeline.getTimeUnits() as unit}",
+    		source: "(82:12) {#each pipeline.getTimeUnits() as unit}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:16) {#if unit.visible()}
+    // (93:16) {#if unit.visible()}
     function create_if_block_3(ctx) {
     	let div;
 
@@ -647,7 +647,7 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			attr_dev(div, "class", "col-1");
-    			add_location(div, file, 84, 20, 4237);
+    			add_location(div, file, 93, 20, 5519);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -668,14 +668,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(84:16) {#if unit.visible()}",
+    		source: "(93:16) {#if unit.visible()}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (83:12) {#each pipeline.getTimeUnits() as unit}
+    // (92:12) {#each pipeline.getTimeUnits() as unit}
     function create_each_block_3(ctx) {
     	let show_if = /*unit*/ ctx[35].visible();
     	let if_block_anchor;
@@ -716,14 +716,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(83:12) {#each pipeline.getTimeUnits() as unit}",
+    		source: "(92:12) {#each pipeline.getTimeUnits() as unit}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (94:16) {#if relation.fromUnit.visible()}
+    // (103:16) {#if relation.fromUnit.visible()}
     function create_if_block_2(ctx) {
     	let div;
 
@@ -740,7 +740,7 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			attr_dev(div, "class", "col-1");
-    			add_location(div, file, 94, 20, 4628);
+    			add_location(div, file, 103, 20, 5910);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -761,14 +761,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(94:16) {#if relation.fromUnit.visible()}",
+    		source: "(103:16) {#if relation.fromUnit.visible()}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (93:12) {#each pipeline.timeUnitRelations as relation}
+    // (102:12) {#each pipeline.timeUnitRelations as relation}
     function create_each_block_2(ctx) {
     	let show_if = /*relation*/ ctx[30].fromUnit.visible();
     	let if_block_anchor;
@@ -809,14 +809,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(93:12) {#each pipeline.timeUnitRelations as relation}",
+    		source: "(102:12) {#each pipeline.timeUnitRelations as relation}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (104:12) {#if relation.fromUnit.visible()}
+    // (113:12) {#if relation.fromUnit.visible()}
     function create_if_block_1(ctx) {
     	let div;
 
@@ -833,7 +833,7 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			attr_dev(div, "class", "col-1");
-    			add_location(div, file, 104, 20, 5040);
+    			add_location(div, file, 113, 20, 6322);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -854,14 +854,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(104:12) {#if relation.fromUnit.visible()}",
+    		source: "(113:12) {#if relation.fromUnit.visible()}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (103:12) {#each pipeline.timeUnitRelations as relation}
+    // (112:12) {#each pipeline.timeUnitRelations as relation}
     function create_each_block_1(ctx) {
     	let show_if = /*relation*/ ctx[30].fromUnit.visible();
     	let if_block_anchor;
@@ -902,14 +902,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(103:12) {#each pipeline.timeUnitRelations as relation}",
+    		source: "(112:12) {#each pipeline.timeUnitRelations as relation}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (118:12) {#if upgrade.visible()}
+    // (127:12) {#if upgrade.visible()}
     function create_if_block(ctx) {
     	let div;
     	let t0_value = /*upgrade*/ ctx[27].name + "";
@@ -937,7 +937,7 @@ var app = (function () {
     			t3 = space();
     			t4 = text(t4_value);
     			t5 = space();
-    			add_location(div, file, 118, 16, 5541);
+    			add_location(div, file, 127, 16, 6823);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -970,14 +970,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(118:12) {#if upgrade.visible()}",
+    		source: "(127:12) {#if upgrade.visible()}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (117:8) {#each upgrades as upgrade}
+    // (126:8) {#each upgrades as upgrade}
     function create_each_block(ctx) {
     	let show_if = /*upgrade*/ ctx[27].visible();
     	let if_block_anchor;
@@ -1018,7 +1018,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(117:8) {#each upgrades as upgrade}",
+    		source: "(126:8) {#each upgrades as upgrade}",
     		ctx
     	});
 
@@ -1186,44 +1186,44 @@ var app = (function () {
     			}
 
     			attr_dev(h1, "class", "title");
-    			add_location(h1, file, 60, 4, 3344);
-    			add_location(h3, file, 61, 4, 3386);
+    			add_location(h1, file, 69, 4, 4626);
+    			add_location(h3, file, 70, 4, 4668);
     			attr_dev(input0, "type", "number");
     			attr_dev(input0, "min", "0");
     			attr_dev(input0, "max", "100");
-    			add_location(input0, file, 63, 8, 3439);
+    			add_location(input0, file, 72, 8, 4721);
     			attr_dev(input1, "type", "range");
     			attr_dev(input1, "min", "0");
     			attr_dev(input1, "max", "100");
-    			add_location(input1, file, 64, 8, 3505);
-    			add_location(label, file, 62, 4, 3422);
-    			add_location(button0, file, 66, 4, 3580);
-    			add_location(button1, file, 67, 4, 3625);
+    			add_location(input1, file, 73, 8, 4787);
+    			add_location(label, file, 71, 4, 4704);
+    			add_location(button0, file, 75, 4, 4862);
+    			add_location(button1, file, 76, 4, 4907);
     			attr_dev(div0, "class", "col-1");
-    			add_location(div0, file, 71, 12, 3734);
+    			add_location(div0, file, 80, 12, 5016);
     			attr_dev(div1, "class", "row");
-    			add_location(div1, file, 70, 8, 3703);
+    			add_location(div1, file, 79, 8, 4985);
     			attr_dev(div2, "class", "col-1");
-    			add_location(div2, file, 81, 12, 4092);
+    			add_location(div2, file, 90, 12, 5374);
     			attr_dev(div3, "class", "row");
-    			add_location(div3, file, 80, 8, 4061);
+    			add_location(div3, file, 89, 8, 5343);
     			attr_dev(div4, "class", "col-1");
-    			add_location(div4, file, 91, 12, 4462);
+    			add_location(div4, file, 100, 12, 5744);
     			attr_dev(div5, "class", "row");
-    			add_location(div5, file, 90, 8, 4431);
+    			add_location(div5, file, 99, 8, 5713);
     			attr_dev(div6, "class", "col-1");
-    			add_location(div6, file, 101, 12, 4875);
+    			add_location(div6, file, 110, 12, 6157);
     			attr_dev(div7, "class", "row");
-    			add_location(div7, file, 100, 8, 4844);
+    			add_location(div7, file, 109, 8, 6126);
     			attr_dev(div8, "class", "container");
-    			add_location(div8, file, 69, 4, 3670);
+    			add_location(div8, file, 78, 4, 4952);
     			attr_dev(p0, "id", "pointsAmount");
-    			add_location(p0, file, 112, 4, 5269);
-    			add_location(p1, file, 113, 4, 5326);
+    			add_location(p0, file, 121, 4, 6551);
+    			add_location(p1, file, 122, 4, 6608);
     			attr_dev(div9, "class", "container");
-    			add_location(div9, file, 115, 4, 5426);
+    			add_location(div9, file, 124, 4, 6708);
     			attr_dev(div10, "class", "container content");
-    			add_location(div10, file, 59, 0, 3307);
+    			add_location(div10, file, 68, 0, 4589);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1560,9 +1560,46 @@ var app = (function () {
     		]);
 
     	var upgrades = [
+    		//  Upgrade(name, visibilityFunction, costUnit, cost, upgradeTarget)
+    		new Upgrade('Increase Seconds base by 100%',
+    		function () {
+    				return seconds.total >= 5;
+    			},
+    		seconds,
+    		10,
+    		function () {
+    				seconds.multiplier.addBase(1);
+    			}),
+    		new Upgrade('Increase Seconds base by 100% again',
+    		function () {
+    				return seconds.total >= 20;
+    			},
+    		seconds,
+    		30,
+    		function () {
+    				seconds.multiplier.addBase(1);
+    			}),
+    		new Upgrade('Increase Seconds base by another 100%',
+    		function () {
+    				return seconds.total >= 40;
+    			},
+    		seconds,
+    		60,
+    		function () {
+    				seconds.multiplier.addBase(1);
+    			}),
+    		new Upgrade('Increase Seconds base by yet another 100%',
+    		function () {
+    				return seconds.total >= 80;
+    			},
+    		seconds,
+    		100,
+    		function () {
+    				seconds.multiplier.addBase(1);
+    			}),
     		new Upgrade('Double Minutes',
     		function () {
-    				return minutes.total >= 0;
+    				return minutes.total >= 5;
     			},
     		minutes,
     		10,
@@ -1571,12 +1608,32 @@ var app = (function () {
     			}),
     		new Upgrade('Triple Minutes',
     		function () {
-    				return minutes.total >= 1;
+    				return minutes.total >= 10;
     			},
     		minutes,
     		15,
     		function () {
     				minutes.multiplier.multiplyFactor(3);
+    			}),
+    		new Upgrade('Seconds gain is squared',
+    		function () {
+    				return hours.total >= 1;
+    			},
+    		hours,
+    		1,
+    		function () {
+    				seconds.exponent.multiplyFactor(2);
+    			}),
+    		new Upgrade('Increase Minutes gain by total Hours',
+    		function () {
+    				return hours.total >= 1;
+    			},
+    		hours,
+    		1,
+    		function () {
+    				minutes.multiplier.addBaseFunction(function () {
+    					return hours.total;
+    				});
     			})
     	];
 
@@ -1609,11 +1666,13 @@ var app = (function () {
     	}
 
     	function onTick() {
-    		let tickrate = (1 + Math.log(points + 1)) * pipeline.getRatio() * speedMult / 20;
-    		$$invalidate(3, points += tickrate);
+    		let tickrate = speedMult / 20;
+    		let firstUnitMod = Math.pow(pipeline.timeUnitRelations[0].fromUnit.multiplier.calculate(), pipeline.timeUnitRelations[0].fromUnit.exponent.calculate());
+    		let increase = firstUnitMod * (1 + Math.log(points + 1)) * pipeline.getRatio() * tickrate;
+    		$$invalidate(3, points += increase);
     		$$invalidate(2, upgrades); // Without this line, newly-visible upgrades don't appear because reasons
-    		$$invalidate(1, pipeline.timeUnitRelations[0].fromUnit.value += tickrate, pipeline);
-    		$$invalidate(1, pipeline.timeUnitRelations[0].fromUnit.total += tickrate, pipeline);
+    		$$invalidate(1, pipeline.timeUnitRelations[0].fromUnit.value += increase, pipeline);
+    		$$invalidate(1, pipeline.timeUnitRelations[0].fromUnit.total += increase, pipeline);
     		pipeline.convert();
     	}
 
