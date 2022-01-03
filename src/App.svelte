@@ -29,7 +29,7 @@
 
     var upgrades: Upgrade[] = [
         new Upgrade('Double Minutes', function() {return minutes.total >= 0}, minutes, 10, function() {minutes.multiplier.multiplyFactor(2)}),
-        new Upgrade('Triple Minutes', function() {return minutes.total >= 0}, minutes, 15, function() {minutes.multiplier.multiplyFactor(3)})
+        new Upgrade('Triple Minutes', function() {return minutes.total >= 1}, minutes, 15, function() {minutes.multiplier.multiplyFactor(3)})
     ];
 
     var points = 0;
@@ -62,7 +62,7 @@
     function onTick(): void {
         let tickrate = (1 + Math.log(points+1)) * pipeline.getRatio() * speedMult/20;
         points += tickrate;
-
+        upgrades = upgrades; // Without this line, newly-visible upgrades don't appear because reasons
         pipeline.timeUnitRelations[0].fromUnit.value += tickrate;
         pipeline.timeUnitRelations[0].fromUnit.total += tickrate;
         pipeline.convert();
@@ -125,11 +125,13 @@
     <p id=pointsAmount>Points: {Math.floor(points)}</p>
     <p>Points are speeding up time by a factor of: {(1 + Math.log(points+1)).toPrecision(5)}</p>
 
-    <ul>
+    <div class='container'>
         {#each upgrades as upgrade}
             {#if upgrade.visible()}
-                <li><button on:click={function() {attemptPurchase(upgrade)}}>{upgrade.name}: {upgrade.cost} {upgrade.costUnit.name}</button></li>
+                <div on:click={function() {attemptPurchase(upgrade)}}>
+                    {upgrade.name}: {upgrade.cost} {upgrade.costUnit.name}
+                </div>
             {/if}
         {/each}
-    </ul>
+    </div>
 </div>
