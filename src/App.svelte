@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
     import TimeUnit from './Classes/TimeUnit'
     import TimeUnitRelation from './Classes/TimeUnitRelation'
     import TimeUnitPipeline from './Classes/TimeUnitPipeline'
     import Upgrade from './Classes/Upgrade'
+
+    //export let name: string;
 
     let speedMult = 1
 
@@ -26,23 +28,24 @@
     var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours, hoursToDays, daysToYears, yearsToEpochs, epochsToEons, eonsToHeatDeaths])
 
     var upgrades = [
-        new Upgrade('Double Minutes', function() {return minutes.total >= 0}, minutes, 10, function(){minutes.multiplier.multiplyFactor(2)}),
-        new Upgrade('Triple Minutes', function() {return minutes.total >= 0}, minutes, 15, function(){minutes.multiplier.multiplyFactor(3)})
+        new Upgrade('Double Minutes', function() {return minutes.total >= 0}, minutes, 10, function() {minutes.multiplier.multiplyFactor(2)}),
+        new Upgrade('Triple Minutes', function() {return minutes.total >= 0}, minutes, 15, function() {minutes.multiplier.multiplyFactor(3)})
     ]
 
     var points = 0
 
-    var intervalID = -1
+    var intervalID = null
 
-    window.start = function() {
+    function start() {
         console.log("Starting...")
+        clearInterval(intervalID)
         intervalID = setInterval(() => onTick(), 50);
     }
 
-    window.stop = function() {
+    function stop() {
         console.log("Stopping...")
         clearInterval(intervalID)
-        intervalID = -1
+        intervalID = null
     }
 
     function attemptPurchase(upgrade) {
@@ -71,8 +74,8 @@
 	<input type=number bind:value={speedMult} min=0 max=100>
 	<input type=range bind:value={speedMult} min=0 max=100>
 </label>
-<button onclick=start()>Start</button>
-<button onclick=stop()>Stop</button>
+<button on:click={start}>Start</button>
+<button on:click={stop}>Stop</button>
 
 <div class='container'>
     <div class='row'>
