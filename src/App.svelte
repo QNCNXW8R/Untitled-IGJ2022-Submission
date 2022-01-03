@@ -1,70 +1,71 @@
 <script lang="ts">
-    import TimeUnit from './Classes/TimeUnit'
-    import TimeUnitRelation from './Classes/TimeUnitRelation'
-    import TimeUnitPipeline from './Classes/TimeUnitPipeline'
-    import Upgrade from './Classes/Upgrade'
+    import TimeUnit from './Classes/TimeUnit';
+    import TimeUnitRelation from './Classes/TimeUnitRelation';
+    import TimeUnitPipeline from './Classes/TimeUnitPipeline';
+    import Upgrade from './Classes/Upgrade';
 
     //export let name: string;
 
-    let speedMult = 1
+    let speedMult = 1;
 
-    var seconds = new TimeUnit('Seconds')
-    var minutes = new TimeUnit('Minutes', 0, 0, function() {return seconds.total >= 30}, function() {return seconds.total >= 60}) // Require upgrade here in future
-    var hours = new TimeUnit('Hours', 0, 0, function() {return minutes.total >= 30}, function() {return minutes.total >= 60})
-    var days = new TimeUnit('Days', 0, 0, function() {return hours.total >= 12}, function() {return hours.total >= 24})
-    var years = new TimeUnit('Years', 0, 0, function() {return days.total >= 90}, function() {return days.total >= 365})
-    var epochs = new TimeUnit('Epochs', 0, 0, function() {return years.total >= 1000}, function() {return years.total >= 10000})
-    var eons = new TimeUnit('Eons', 0, 0, function() {return epochs.total >= 1000}, function() {return epochs.total >= 100000})
-    var heatDeaths = new TimeUnit('Heat Deaths', 0, 0, function() {return eons.total >= 1000}, function() {return eons.total >= 1000000})
+    var seconds = new TimeUnit('Seconds');
+    var minutes = new TimeUnit('Minutes', 0, 0, function() {return seconds.total >= 30}, function() {return seconds.total >= 60}); // Require upgrade here in future
+    var hours = new TimeUnit('Hours', 0, 0, function() {return minutes.total >= 30}, function() {return minutes.total >= 60});
+    var days = new TimeUnit('Days', 0, 0, function() {return hours.total >= 12}, function() {return hours.total >= 24});
+    var years = new TimeUnit('Years', 0, 0, function() {return days.total >= 90}, function() {return days.total >= 365});
+    var epochs = new TimeUnit('Epochs', 0, 0, function() {return years.total >= 1000}, function() {return years.total >= 10000});
+    var eons = new TimeUnit('Eons', 0, 0, function() {return epochs.total >= 1000}, function() {return epochs.total >= 100000});
+    var heatDeaths = new TimeUnit('Heat Deaths', 0, 0, function() {return eons.total >= 1000}, function() {return eons.total >= 1000000});
 
-    var secondsToMinutes = new TimeUnitRelation(seconds, minutes, 60, 60, 10)
-    var minutesToHours = new TimeUnitRelation(minutes, hours, 60, 60, 15)
-    var hoursToDays = new TimeUnitRelation(hours, days, 24, 24, 6)
-    var daysToYears = new TimeUnitRelation(days, years, 365, 365, 73)
-    var yearsToEpochs = new TimeUnitRelation(years, epochs, 10000, 10000, 1000)
-    var epochsToEons = new TimeUnitRelation(epochs, eons, 100000, 100000, 25000)
-    var eonsToHeatDeaths = new TimeUnitRelation(eons, heatDeaths, 1000000, 1000000, 1000000)
+    var secondsToMinutes = new TimeUnitRelation(seconds, minutes, 60, 60, 10);
+    var minutesToHours = new TimeUnitRelation(minutes, hours, 60, 60, 15);
+    var hoursToDays = new TimeUnitRelation(hours, days, 24, 24, 6);
+    var daysToYears = new TimeUnitRelation(days, years, 365, 365, 73);
+    var yearsToEpochs = new TimeUnitRelation(years, epochs, 10000, 10000, 1000);
+    var epochsToEons = new TimeUnitRelation(epochs, eons, 100000, 100000, 25000);
+    var eonsToHeatDeaths = new TimeUnitRelation(eons, heatDeaths, 1000000, 1000000, 1000000);
 
-    var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours, hoursToDays, daysToYears, yearsToEpochs, epochsToEons, eonsToHeatDeaths])
+    var pipeline = new TimeUnitPipeline([secondsToMinutes, minutesToHours, hoursToDays, daysToYears, yearsToEpochs, epochsToEons, eonsToHeatDeaths]);
 
-    var upgrades = [
+    var upgrades: Upgrade[] = [
         new Upgrade('Double Minutes', function() {return minutes.total >= 0}, minutes, 10, function() {minutes.multiplier.multiplyFactor(2)}),
         new Upgrade('Triple Minutes', function() {return minutes.total >= 0}, minutes, 15, function() {minutes.multiplier.multiplyFactor(3)})
-    ]
+    ];
 
-    var points = 0
+    var points = 0;
 
-    var intervalID = null
+    var intervalID = null;
 
-    function start() {
-        console.log("Starting...")
-        clearInterval(intervalID)
+    function start(): void {
+        console.log("Starting...");
+        clearInterval(intervalID);
         intervalID = setInterval(() => onTick(), 50);
     }
 
-    function stop() {
-        console.log("Stopping...")
-        clearInterval(intervalID)
-        intervalID = null
+    function stop(): void {
+        console.log("Stopping...");
+        clearInterval(intervalID);
+        intervalID = null;
     }
 
-    function attemptPurchase(upgrade) {
-        let success = upgrade.purchase()
+    function attemptPurchase(upgrade: Upgrade): boolean {
+        let success = upgrade.purchase();
         if (success) {
             upgrades = upgrades.filter((value) => value.name !== upgrade.name);
             console.log('Successfully purchased upgrade "' + upgrade.name + '"');
         } else {
-            'Purchase failed'
+            console.log('Purchase failed');
         }
+        return success;
     }
 
-    function onTick() {
-        let tickrate = (1 + Math.log(points+1)) * pipeline.getRatio() * speedMult/20
-        points += tickrate
+    function onTick(): void {
+        let tickrate = (1 + Math.log(points+1)) * pipeline.getRatio() * speedMult/20;
+        points += tickrate;
 
-        pipeline.timeUnitRelations[0].fromUnit.value += tickrate
-        pipeline.timeUnitRelations[0].fromUnit.total += tickrate
-        pipeline.convert()
+        pipeline.timeUnitRelations[0].fromUnit.value += tickrate;
+        pipeline.timeUnitRelations[0].fromUnit.total += tickrate;
+        pipeline.convert();
     }
 </script>
 
